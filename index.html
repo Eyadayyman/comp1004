@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MapExplorer - Find Places Around You</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap">
+</head>
+<body>
+    <div class="app-container">
+        <header class="app-header">
+            <div class="logo">
+                <h1>MapExplorer</h1>
+            </div>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="#" class="active" data-view="map">Map</a></li>
+                    <li><a href="#" data-view="saved">Saved Places</a></li>
+                    <li><a href="#" data-view="about">About</a></li>
+                </ul>
+            </nav>
+            <div class="user-controls">
+                <button id="theme-toggle">🌙</button>
+            </div>
+        </header>
+
+        <main class="app-content">
+            <!-- Map View -->
+            <section id="map-view" class="view active">
+                <div class="search-container">
+                    <input type="text" id="search-input" placeholder="Search for a place...">
+                    <button id="search-button">Search</button>
+                    <div class="filter-options">
+                        <button class="filter-btn" data-category="restaurant">Restaurants</button>
+                        <button class="filter-btn" data-category="hotel">Hotels</button>
+                        <button class="filter-btn" data-category="attraction">Attractions</button>
+                    </div>
+                </div>
+                <div id="map-container">
+                    <!-- Map will be rendered here -->
+                </div>
+                <div id="place-details" class="hidden">
+                    <button id="close-details">×</button>
+                    <h2 id="place-name">Place Name</h2>
+                    <p id="place-address">Address</p>
+                    <div id="place-rating">⭐⭐⭐⭐⭐</div>
+                    <p id="place-description">Description of the place...</p>
+                    <button id="save-place">Save to My Places</button>
+                </div>
+            </section>
+
+            <!-- Saved Places View -->
+            <section id="saved-view" class="view">
+                <h2>My Saved Places</h2>
+                <div class="saved-places-container">
+                    <p class="empty-state">You haven't saved any places yet.</p>
+                    <!-- Saved places will be listed here -->
+                </div>
+            </section>
+
+            <!-- About View -->
+            <section id="about-view" class="view">
+                <div class="about-content">
+                    <h2>About MapExplorer</h2>
+                    <p>MapExplorer is a single page application designed to help users discover and save interesting places around them.</p>
+                    
+                    <h3>Features</h3>
+                    <ul>
+                        <li>Interactive map interface</li>
+                        <li>Search for places by name or category</li>
+                        <li>Save favorite locations</li>
+                        <li>View detailed information about places</li>
+                        <li>Dark/light theme toggle</li>
+                    </ul>
+                    
+                    <h3>Technology</h3>
+                    <p>This application was built using:</p>
+                    <ul>
+                        <li>HTML5 for structure</li>
+                        <li>CSS3 for styling and animations</li>
+                        <li>Vanilla JavaScript for functionality</li>
+                        <li>Local Storage API for saving user data</li>
+                        <li>Canvas API for custom map visualizations</li>
+                    </ul>
+                    
+                    <h3>Development Process</h3>
+                    <p>This project was developed following the software development lifecycle:</p>
+                    <ol>
+                        <li>Requirements gathering and analysis</li>
+                        <li>Design (UML diagrams, wireframes)</li>
+                        <li>Implementation using agile methodology</li>
+                        <li>Testing and validation</li>
+                        <li>Deployment and maintenance</li>
+                    </ol>
+                </div>
+            </section>
+        </main>
+
+        <footer class="app-footer">
+            <p>&copy; 2025 MapExplorer | COMP1004 Computing Practice</p>
+        </footer>
+    </div>
+
+    <!-- Notification System -->
+    <div id="notification" class="notification">
+        <p id="notification-message"></p>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
+
