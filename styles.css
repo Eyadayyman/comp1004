@@ -1,0 +1,475 @@
+/* Base Styles and Variables */
+:root {
+    --primary-color: #3498db;
+    --secondary-color: #2ecc71;
+    --accent-color: #e74c3c;
+    --text-color: #333;
+    --bg-color: #f5f5f5;
+    --card-bg: #ffffff;
+    --header-bg: #ffffff;
+    --shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    --border-radius: 8px;
+    --transition: all 0.3s ease;
+  }
+  
+  /* Dark Theme Variables */
+  .dark-theme {
+    --primary-color: #3498db;
+    --secondary-color: #2ecc71;
+    --accent-color: #e74c3c;
+    --text-color: #f5f5f5;
+    --bg-color: #222;
+    --card-bg: #333;
+    --header-bg: #1a1a1a;
+    --shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+  }
+  
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: "Roboto", sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    line-height: 1.6;
+    transition: var(--transition);
+  }
+  
+  .app-container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+  
+  /* Header Styles */
+  .app-header {
+    background-color: var(--header-bg);
+    box-shadow: var(--shadow);
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    transition: var(--transition);
+  }
+  
+  .logo h1 {
+    color: var(--primary-color);
+    font-size: 1.8rem;
+    font-weight: 700;
+  }
+  
+  .main-nav ul {
+    display: flex;
+    list-style: none;
+  }
+  
+  .main-nav li {
+    margin: 0 1rem;
+  }
+  
+  .main-nav a {
+    text-decoration: none;
+    color: var(--text-color);
+    font-weight: 500;
+    padding: 0.5rem 1rem;
+    border-radius: var(--border-radius);
+    transition: var(--transition);
+  }
+  
+  .main-nav a:hover,
+  .main-nav a.active {
+    background-color: var(--primary-color);
+    color: white;
+  }
+  
+  .user-controls button {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: var(--transition);
+  }
+  
+  .user-controls button:hover {
+    transform: scale(1.1);
+  }
+  
+  /* Main Content Styles */
+  .app-content {
+    flex: 1;
+    padding: 2rem;
+    transition: var(--transition);
+  }
+  
+  .view {
+    display: none;
+  }
+  
+  .view.active {
+    display: block;
+  }
+  
+  /* Map View Styles */
+  .search-container {
+    margin-bottom: 1rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    align-items: center;
+  }
+  
+  #search-input {
+    flex: 1;
+    padding: 0.75rem;
+    border: 1px solid #ddd;
+    border-radius: var(--border-radius);
+    font-size: 1rem;
+    min-width: 200px;
+  }
+  
+  #search-button {
+    padding: 0.75rem 1.5rem;
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    font-weight: 500;
+    transition: var(--transition);
+  }
+  
+  #search-button:hover {
+    background-color: #2980b9;
+  }
+  
+  .filter-options {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+  }
+  
+  .filter-btn {
+    padding: 0.5rem 1rem;
+    background-color: var(--card-bg);
+    border: 1px solid #ddd;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    transition: var(--transition);
+  }
+  
+  .filter-btn:hover,
+  .filter-btn.active {
+    background-color: var(--secondary-color);
+    color: white;
+    border-color: var(--secondary-color);
+  }
+  
+  #map-container {
+    height: 500px;
+    background-color: var(--card-bg);
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+    position: relative;
+    overflow: hidden;
+    border: 1px solid #ddd;
+    margin-bottom: 1.5rem;
+  }
+  
+  /* Add a loading indicator for the map */
+  #map-container::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 40px;
+    height: 40px;
+    border: 4px solid rgba(0, 0, 0, 0.1);
+    border-radius: 50%;
+    border-top-color: var(--primary-color);
+    animation: spin 1s linear infinite;
+    z-index: 0;
+  }
+  
+  @keyframes spin {
+    0% {
+      transform: translate(-50%, -50%) rotate(0deg);
+    }
+    100% {
+      transform: translate(-50%, -50%) rotate(360deg);
+    }
+  }
+  
+  /* Make sure canvas is properly displayed */
+  #map-container canvas {
+    position: relative;
+    z-index: 1;
+  }
+  
+  /* Place Details Styles */
+  #place-details {
+    position: absolute;
+    top: 6rem;
+    right: 1rem;
+    width: 300px;
+    background-color: var(--card-bg);
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+    padding: 1.5rem;
+    z-index: 10;
+    transition: var(--transition);
+  }
+  
+  #place-details.hidden {
+    display: none;
+  }
+  
+  #close-details {
+    position: absolute;
+    top: 0.5rem;
+    right: 0.5rem;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: var(--text-color);
+  }
+  
+  #place-name {
+    margin-bottom: 0.5rem;
+    color: var(--primary-color);
+  }
+  
+  #place-address {
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+    color: #777;
+  }
+  
+  #place-rating {
+    margin-bottom: 1rem;
+    color: #f39c12;
+  }
+  
+  #place-description {
+    margin-bottom: 1rem;
+    font-size: 0.95rem;
+  }
+  
+  #save-place {
+    width: 100%;
+    padding: 0.75rem;
+    background-color: var(--secondary-color);
+    color: white;
+    border: none;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    font-weight: 500;
+    transition: var(--transition);
+  }
+  
+  #save-place:hover {
+    background-color: #27ae60;
+  }
+  
+  /* Saved Places View Styles */
+  .saved-places-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+  }
+  
+  .place-card {
+    background-color: var(--card-bg);
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+    padding: 1.5rem;
+    transition: var(--transition);
+  }
+  
+  .place-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  }
+  
+  .place-card h3 {
+    color: var(--primary-color);
+    margin-bottom: 0.5rem;
+  }
+  
+  .place-card .address {
+    font-size: 0.9rem;
+    color: #777;
+    margin-bottom: 0.5rem;
+  }
+  
+  .place-card .rating {
+    color: #f39c12;
+    margin-bottom: 1rem;
+  }
+  
+  .place-card .actions {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .place-card button {
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    transition: var(--transition);
+  }
+  
+  .view-btn {
+    background-color: var(--primary-color);
+    color: white;
+  }
+  
+  .view-btn:hover {
+    background-color: #2980b9;
+  }
+  
+  .remove-btn {
+    background-color: var(--accent-color);
+    color: white;
+  }
+  
+  .remove-btn:hover {
+    background-color: #c0392b;
+  }
+  
+  .empty-state {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 2rem;
+    background-color: var(--card-bg);
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+  }
+  
+  /* About View Styles */
+  .about-content {
+    max-width: 800px;
+    margin: 0 auto;
+    background-color: var(--card-bg);
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+    padding: 2rem;
+  }
+  
+  .about-content h2 {
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+  }
+  
+  .about-content h3 {
+    margin: 1.5rem 0 0.5rem;
+    color: var(--secondary-color);
+  }
+  
+  .about-content ul,
+  .about-content ol {
+    margin-left: 1.5rem;
+  }
+  
+  .about-content li {
+    margin-bottom: 0.5rem;
+  }
+  
+  /* Footer Styles */
+  .app-footer {
+    background-color: var(--header-bg);
+    text-align: center;
+    padding: 1.5rem;
+    margin-top: auto;
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+    transition: var(--transition);
+  }
+  
+  /* Notification Styles */
+  .notification {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    background-color: var(--primary-color);
+    color: white;
+    padding: 1rem 2rem;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+    transform: translateY(150%);
+    transition: transform 0.3s ease;
+    z-index: 1000;
+  }
+  
+  .notification.show {
+    transform: translateY(0);
+  }
+  
+  /* Responsive Styles */
+  @media (max-width: 768px) {
+    .app-header {
+      flex-direction: column;
+      padding: 1rem;
+    }
+  
+    .logo {
+      margin-bottom: 1rem;
+    }
+  
+    .main-nav ul {
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+  
+    .main-nav li {
+      margin: 0.5rem;
+    }
+  
+    .search-container {
+      flex-direction: column;
+      align-items: stretch;
+    }
+  
+    #search-input,
+    #search-button {
+      width: 100%;
+    }
+  
+    #map-container {
+      height: 400px;
+    }
+  
+    #place-details {
+      width: 100%;
+      top: 6rem !important;
+      right: auto;
+      bottom: 0;
+      left: 0;
+      border-radius: var(--border-radius) var(--border-radius) 0 0;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .app-content {
+      padding: 1rem;
+    }
+  
+    #map-container {
+      height: 300px;
+    }
+  
+    .saved-places-container {
+      grid-template-columns: 1fr;
+    }
+  }
+  
+  
