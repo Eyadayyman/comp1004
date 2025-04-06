@@ -122,7 +122,7 @@ This project was developed following the software development lifecycle:
 
 ## Credits
 
-- Developed by [Your Name]
+- Developed by Eyadayyman
 - Created for COMP1004 Computing Practice module
 - Icons and design inspiration from various sources
 
