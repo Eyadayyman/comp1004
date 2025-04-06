@@ -32,22 +32,11 @@ MapExplorer is a single page web application (SPA) built with vanilla JavaScript
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/yourusername/map-explorer.git
-   cd map-explorer
+   git clone [https://github.com/yourusername/map-explorer.git](https://github.com/Eyadayyman/comp1004.git)
+  
 
-   ```
-   2. No build process or dependencies required! Simply open `index.html` in your browser:
-
-```shellscript
-# On macOS
-open index.html
-
-# On Windows
-start index.html
-
-# On Linux
-xdg-open index.html
 ```
+2. No build process or dependencies required! Simply open `index.html` in your browser:
 
 
 3. Alternatively, you can use a local development server:
